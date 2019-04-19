@@ -10,17 +10,33 @@ using OpenTK.Input;
 
 namespace OpenTkTest
 {
-    internal class Game:GameWindow
+    internal class Game : GameWindow
     {
+
+       
+
         public Game(int width, int height, string title) : base(width, height, GraphicsMode.Default, title)
         {
 
         }
 
+            int vbo;
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            GL.ClearColor(1f, 0.3f, 0.3f, 1.0f);
+            GL.ClearColor(.9f, .9f, 0.9f, 1.0f);
+
+            float[] vertices = {
+                -0.5f, -0.5f, 0.0f, //Bottom-left vertex
+                0.5f, -0.5f, 0.0f, //Bottom-right vertex
+                0.0f,  0.5f, 0.0f  //Top vertex
+            };
+
+
+            vbo = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ArrayBuffer,vbo);
+            GL.BufferData(BufferTarget.ArrayBuffer,vertices.Length*sizeof(float),vertices,BufferUsageHint.StaticDraw);
+
         }
 
         protected override void OnRenderFrame(FrameEventArgs e)
@@ -28,7 +44,6 @@ namespace OpenTkTest
             base.OnRenderFrame(e);
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            //Code goes here.
 
             Context.SwapBuffers();
         }
@@ -48,7 +63,14 @@ namespace OpenTkTest
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            GL.Viewport(0,0,Width,Height);
+            GL.Viewport(0, 0, Width, Height);
+        }
+
+        protected override void OnUnload(EventArgs e)
+        {
+            base.OnUnload(e);
+            GL.BindBuffer(BufferTarget.ArrayBuffer,0);
+            GL.DeleteBuffer(vbo);
         }
     }
 }
