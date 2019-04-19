@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ED037A44-74F8-4ACA-87D4-F0B199FBA6E1}</ProjectGuid>
+    <ProjectGuid>{DBCACBC1-DB15-4648-A272-7B535D2762C2}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>OpenTkTest</RootNamespace>
     <AssemblyName>OpenTkTest</AssemblyName>
@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="OpenTK, Version=3.0.1.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
-      <HintPath>packages\OpenTK.3.0.1\lib\net20\OpenTK.dll</HintPath>
+      <HintPath>..\packages\OpenTK.3.0.1\lib\net20\OpenTK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
