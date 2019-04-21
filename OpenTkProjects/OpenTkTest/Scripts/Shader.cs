@@ -65,7 +65,7 @@ namespace OpenTkTest.Scripts
             GL.DeleteShader(vertexShader);
         }
 
-        void Use()
+        public void Use()
         {
             GL.UseProgram(Handle);
         }
@@ -87,7 +87,7 @@ namespace OpenTkTest.Scripts
             GL.DeleteProgram(Handle);
         }
 
-
+        //todo figure out dispose pattern
         public void Dispose()
         {
             Dispose(true);

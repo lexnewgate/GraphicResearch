@@ -14,6 +14,7 @@ namespace OpenTkTest
     internal class Game : GameWindow
     {
         int vbo;
+        int VertexArrayObject;
         private Shader shader;
 
         public Game(int width, int height, string title) : base(width, height, GraphicsMode.Default, title)
@@ -32,11 +33,19 @@ namespace OpenTkTest
                 0.0f,  0.5f, 0.0f  //Top vertex
             };
 
+            VertexArrayObject = GL.GenBuffer();
+            GL.bind
+
+            shader = new Shader("shader.vert", "shader.frag");
 
             vbo = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ArrayBuffer, vbo);
             GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
-            shader = new Shader("shader.vert", "shader.frag");
+            GL.VertexAttribPointer(0,3,VertexAttribPointerType.Float,false,3*sizeof(float),0 );
+            GL.EnableVertexAttribArray(0);
+            
+            shader.Use();
+
 
         }
 
