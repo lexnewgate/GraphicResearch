@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenTkTest.Scripts;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.ES20;
@@ -12,15 +13,14 @@ namespace OpenTkTest
 {
     internal class Game : GameWindow
     {
-
-       
+        int vbo;
+        private Shader shader;
 
         public Game(int width, int height, string title) : base(width, height, GraphicsMode.Default, title)
         {
 
         }
 
-            int vbo;
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -34,8 +34,9 @@ namespace OpenTkTest
 
 
             vbo = GL.GenBuffer();
-            GL.BindBuffer(BufferTarget.ArrayBuffer,vbo);
-            GL.BufferData(BufferTarget.ArrayBuffer,vertices.Length*sizeof(float),vertices,BufferUsageHint.StaticDraw);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, vbo);
+            GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
+            shader = new Shader("shader.vert", "shader.frag");
 
         }
 
@@ -69,8 +70,9 @@ namespace OpenTkTest
         protected override void OnUnload(EventArgs e)
         {
             base.OnUnload(e);
-            GL.BindBuffer(BufferTarget.ArrayBuffer,0);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             GL.DeleteBuffer(vbo);
+            shader.Dispose();
         }
     }
 }
