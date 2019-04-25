@@ -481,8 +481,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c427decd1252649924e10d9267de26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 0
-  height: 0
+  width: 5
+  height: 10
   point: {fileID: 4454000282979688843, guid: 45b23b218183af64cbb724608ab45c5d, type: 3}
   canvas: {fileID: 591893679}
 --- !u!4 &1464979027
