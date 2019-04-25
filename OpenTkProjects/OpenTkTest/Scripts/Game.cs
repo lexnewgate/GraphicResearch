@@ -16,15 +16,15 @@ namespace OpenTkTest
 
 
         private readonly float[] _vertices = {
-            0.5f,  0.5f, 0.0f,  // top right
+            0f,  0f, 0.0f,  // top right
             0.5f, -0.5f, 0.0f,  // bottom right
             -0.5f, -0.5f, 0.0f,  // bottom left
             -0.5f,  0.5f, 0.0f   // top left
         };
 
         private readonly uint[] _indices = {  // note that we start from 0!
-            0, 1, 3,   // first triangle
-            1, 2, 3    // second triangle
+            0,// 1, 3,   // first triangle
+            //1, 2, 3    // second triangle
         };
         public Game(int width, int height, string title) : base(width, height, GraphicsMode.Default, title)
         {
@@ -35,6 +35,7 @@ namespace OpenTkTest
         {
             base.OnLoad(e);
             GL.ClearColor(.9f, .9f, 0.9f, 1.0f);
+            GL.PointSize(600);
 
             //ebo
             _ebo = GL.GenBuffer();
@@ -65,7 +66,10 @@ namespace OpenTkTest
             GL.Clear(ClearBufferMask.ColorBufferBit);
             GL.BindVertexArray(_vao);
             _shader.Use();
-            GL.DrawElements(PrimitiveType.Triangles,_indices.Length,DrawElementsType.UnsignedInt,0);
+            //GL.DrawElements(PrimitiveType.Triangles,_indices.Length,DrawElementsType.UnsignedInt,0);
+
+            //GL.DrawElements(PrimitiveType.Points,_indices.Length,DrawElementsType.UnsignedInt,0);
+            GL.DrawElements(PrimitiveType.Points,_indices.Length,DrawElementsType.UnsignedInt,0);
             Context.SwapBuffers();
         }
 
