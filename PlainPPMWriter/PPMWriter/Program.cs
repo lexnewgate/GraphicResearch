@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-//ref: http://netpbm.sourceforge.net/doc/ppm.html
-
-namespace PPMWriter
+﻿namespace PPMWriter
 {
     class Program
     {
